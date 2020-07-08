@@ -4,13 +4,14 @@
 	use Request;
 	use DB;
 	use CRUDBooster;
+	use Illuminate\Support\Str;
 
-	class AdminJobsController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminCareerCategoriesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "title";
+			$this->title_field = "name";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -25,29 +26,23 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "jobs";
+			$this->table = "career_categories";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Title","name"=>"title"];
-			$this->col[] = ["label"=>"Category","name"=>"category_id","join"=>"career_categories,name"];
+			$this->col[] = ["label"=>"Name","name"=>"name"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:150','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			$this->form[] = ['label'=>'Body','name'=>'body','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Application link','name'=>'url','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Category','name'=>'category_id','type'=>'select','validation'=>'required','width'=>'col-sm-10','datatable'=>'career_categories,name'];
+			$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:150','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			//$this->form[] = ['label'=>'Body','name'=>'body','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Application link','name'=>'url','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Category','name'=>'category_id','type'=>'select','validation'=>'required','width'=>'col-sm-10','datatable'=>'career_categories,name'];
+			//$this->form[] = ["label"=>"Name","name"=>"name","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"You can only enter the letter only"];
+			//$this->form[] = ["label"=>"Slug","name"=>"slug","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
 			# OLD END FORM
 
 			/* 
@@ -235,6 +230,7 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
+	        
 	            
 	    }
 
@@ -256,8 +252,8 @@
 	    |
 	    */
 	    public function hook_before_add(&$postdata) {        
-	        $postdata['slug'] = str_slug($postdata['title']);
-
+	        //Your code here
+	    	$postdata['slug'] = Str::slug($postdata['name']);
 	    }
 
 	    /* 
@@ -281,7 +277,7 @@
 	    | 
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
-	        $postdata['slug'] = str_slug($postdata['title']);
+	        //Your code here
 
 	    }
 
