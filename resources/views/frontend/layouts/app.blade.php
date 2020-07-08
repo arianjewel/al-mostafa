@@ -267,7 +267,7 @@
                     <!-- End Col -->
                     <div class="col-md-6">
                         <div class="text-right">
-                             <span>Design By : <a href="">Soft IT Security</a></span>
+                             <span>Design By : <a href="https://softitsecurity.com/">Soft IT Security</a></span>
                         </div>
                     </div>
                     <!-- End col -->
