@@ -1,0 +1,80 @@
+/* Medium Layout: 1367px. */
+
+@media only screen and (min-width: 1200px) and (max-width: 1367px) {
+
+}
+
+
+/* Medium Layout: 1280px. */
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    
+}
+
+
+/* Tablet Layout: 768px. */
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    
+}
+
+@media only screen and (max-width: 991px) {
+    .container.menu {
+        position: relative;
+    }
+    
+    .menu .show-on-mobile {
+        position: relative;
+    }
+    
+    .menu > ul > li > ul {
+        width: 100%;
+        left: 0 !important;
+    }
+    
+    .menu > ul > li > ul > li a {
+        margin: 0 auto !important;
+    }
+    .menu .show-on-mobile {
+        position: relative;
+        overflow: scroll;
+        max-height: 400px;
+        overflow-x: hidden;
+    }
+    /* width */
+    .menu .show-on-mobile::-webkit-scrollbar {
+        width: 0px;
+    }
+    
+    /* Track */
+    .menu .show-on-mobile::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+    
+    /* Handle */
+    .menu .show-on-mobile::-webkit-scrollbar-thumb {
+        background: #888; 
+    }
+    
+    /* Handle on hover */
+    .menu .show-on-mobile::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
+}
+/* Mobile Layout: 320px. */
+
+@media only screen and (max-width: 767px) {}
+
+
+/* Wide Mobile Layout: 480px. */
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+    
+}
+
+
+/* Wide Mobile Layout: 480px. */
+
+@media only screen and (min-width: 240px) and (max-width: 480px) {
+    
+}
