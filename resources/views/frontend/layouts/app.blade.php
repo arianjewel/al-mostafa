@@ -151,18 +151,24 @@
                             <h3>Follow us:</h3>
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ \CRUDBooster::getSetting('facebook') }}" @if(\CRUDBooster::getSetting('facebook')) target="_blank" @endif }}>
                                         <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ \CRUDBooster::getSetting('twitter') }}" @if(\CRUDBooster::getSetting('twitter')) target="_blank" @endif }}>
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ \CRUDBooster::getSetting('linkedin') }}" @if(\CRUDBooster::getSetting('linkedin')) target="_blank" @endif }}>
                                         <i class="fa fa-linkedin"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" style="background: red;">
+                                    <a href="{{ \CRUDBooster::getSetting('youtube') }}" @if(\CRUDBooster::getSetting('youtube')) target="_blank" @endif }}>
                                         <i class="fa fa-youtube" ></i>
                                     </a>
                                 </li>
@@ -267,7 +273,7 @@
                     <!-- End Col -->
                     <div class="col-md-6">
                         <div class="text-right">
-                             <span>Design By : <a href="https://softitsecurity.com/">Soft IT Security</a></span>
+                             <span>Design By : <a href="https://softitsecurity.com">Soft IT Security</a></span>
                         </div>
                     </div>
                     <!-- End col -->
