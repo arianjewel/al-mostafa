@@ -87,7 +87,7 @@
                                 <ul>
                                 @foreach(\App\About::all() as $about)
                                     <li class="{{Request::url() == route('about.single', $about->slug) ? 'active' : '' }}"><a href="{{route('about.single', $about->slug)}}">{{$about->title}}</a></li>
-                                    <li class="{{Request::url() == route('about.single', $about->slug) ? 'active' : '' }}"><a href="boarddirectors.html">Our Management</a></li>
+                                    <li class="{{Request::url() == route('management') ? 'active' : '' }}"><a href="{{route('management')}}">Our Management</a></li>
                                 @endforeach
                                 </ul>
                             </li>
@@ -109,7 +109,7 @@
                             <li>
                                 <ul>
                                 @foreach(\App\Facility::all() as $facility)
-                                    <li class="{{Request::url() == route('facility.single', $facility->slug) ? 'active' : '' }}"><a href="{{route('facility.single', $facility->slug)}}">{{$facility->title}}</a></li>
+                                    <li class="{{Request::url() == route('facility.single', $facility->slug) ? 'active' : '' }}"><a href="{{$facility->url}}" target="_blank">{{$facility->title}}</a></li>
                                 @endforeach
                                 </ul>
                             </li>

@@ -30,3 +30,5 @@ Route::get('/event/{slug}', 'FrontendController@eventSingle')->name('event.singl
 Route::get('/gallery', 'FrontendController@gallery')->name('gallery');
 
 Route::get('/job/category', 'FrontendController@careerFromCategory')->name('career.category');
+
+Route::get('/management', 'FrontendController@management')->name('management');

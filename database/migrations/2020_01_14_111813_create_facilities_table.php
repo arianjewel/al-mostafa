@@ -23,6 +23,7 @@ class CreateFacilitiesTable extends Migration
             $table->string('image_2')->nullable();
             $table->string('image_3')->nullable();
             $table->string('image_4')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

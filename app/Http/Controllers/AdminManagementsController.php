@@ -5,12 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminFacilitiesController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminManagementsController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "title";
+			$this->title_field = "name";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -25,38 +25,28 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "facilities";
+			$this->table = "managements";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
+			$this->col[] = ["label"=>"Name","name"=>"name"];
 			$this->col[] = ["label"=>"Title","name"=>"title"];
-			$this->col[] = ["label"=>"Slug","name"=>"slug"];
-			$this->col[] = ["label"=>"Website","name"=>"url"];
-			// $this->col[] = ["label"=>"Image","name"=>"image_1","image"=>true,"width"=>"40"];
+			$this->col[] = ["label"=>"Image","name"=>"image","image"=>true];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:250','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			$this->form[] = ['label'=>'Website','name'=>'url','type'=>'text','validation'=>'required|url|min:3|max:250','width'=>'col-sm-10','placeholder'=>'You can only enter valid url only'];
-			// $this->form[] = ['label'=>'Body','name'=>'body','type'=>'wysiwyg','validation'=>'required','width'=>'col-sm-10'];
-			// $this->form[] = ['label'=>'Promo','name'=>'promo','type'=>'textarea','validation'=>'max:1000','width'=>'col-sm-10','help'=>'"Founded in 2008 ", "Pre-made barrier and high barrier bags", "Nine years of packaging experience", "Flexible packaging manufacturer "'];
-			// $this->form[] = ['label'=>'Image 1','name'=>'image_1','type'=>'upload','validation'=>'image|max:3000','width'=>'col-sm-10'];
-			// $this->form[] = ['label'=>'Image 2','name'=>'image_2','type'=>'upload','validation'=>'image|max:3000','width'=>'col-sm-10'];
-			// $this->form[] = ['label'=>'Image 3','name'=>'image_3','type'=>'upload','validation'=>'image|max:3000','width'=>'col-sm-10'];
-			// $this->form[] = ['label'=>'Image 4','name'=>'image_4','type'=>'upload','validation'=>'image|max:3000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'nullable|string|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>'Image','name'=>'image','type'=>'upload','validation'=>'nullable|image|max:3000','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:250','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			//$this->form[] = ['label'=>'Body','name'=>'body','type'=>'wysiwyg','validation'=>'required','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Promo','name'=>'promo','type'=>'textarea','validation'=>'max:1000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Image 1','name'=>'image_1','type'=>'upload','validation'=>'image|max:3000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Image 2','name'=>'image_2','type'=>'upload','validation'=>'image|max:3000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Image 3','name'=>'image_3','type'=>'upload','validation'=>'image|max:3000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Image 4','name'=>'image_4','type'=>'upload','validation'=>'image|max:3000','width'=>'col-sm-10'];
+			//$this->form[] = ["label"=>"Name","name"=>"name","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"You can only enter the letter only"];
+			//$this->form[] = ["label"=>"Title","name"=>"title","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"You can only enter the letter only"];
+			//$this->form[] = ["label"=>"Image","name"=>"image","type"=>"upload","required"=>TRUE,"validation"=>"required|image|max:3000","help"=>"File types support : JPG, JPEG, PNG, GIF, BMP"];
 			# OLD END FORM
 
 			/* 
@@ -265,7 +255,7 @@
 	    |
 	    */
 	    public function hook_before_add(&$postdata) {        
-	        $postdata['slug'] = str_slug($postdata['title']);
+	        //Your code here
 
 	    }
 
@@ -290,7 +280,7 @@
 	    | 
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
-	        $postdata['slug'] = str_slug($postdata['title']);
+	        //Your code here
 
 	    }
 

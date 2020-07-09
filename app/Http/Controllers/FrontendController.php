@@ -79,4 +79,9 @@ class FrontendController extends Controller
         ]);
     }
 
+    public function management(){
+        $members = \App\Management::paginate(6);
+        return view('frontend.management', compact('members'));
+    }
+
 }

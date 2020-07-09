@@ -1013,7 +1013,7 @@ button.close {
     margin-bottom: 1%;
 }
 
-.about-area a{
+.about-area a:not(.page-link){
     background: transparent;
     padding: 2%;
     color: #6200ea;
