@@ -1,5 +1,6 @@
 <table class="table">
   	<tbody class="text-center">
+  		@if(count($jobs)>0)
 		@foreach($jobs as $job)
 		<tr>
 		  <td class="w-75"><a href="{{route('career.single', $job->slug)}}" target="_blank">{{$job->title}}</a></td>
@@ -9,6 +10,11 @@
 		  <td>{{date('M d, Y', strtotime($job->created_at))}}</td>
 		</tr>
 		@endforeach
+		@else
+		<tr>
+			<td>No Job found!</td>
+		</tr>
+		@endif
 	</tbody>
 </table>
 {{$jobs->appends($_GET)->links()}}

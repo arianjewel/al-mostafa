@@ -75,7 +75,7 @@ class FrontendController extends Controller
 
         return response()->json([
             'success' => true,
-            'html' => view('frontend.career.job_table_body', compact('jobs'))->render()
+            'html' => view('frontend.career.job_table', compact('jobs'))->render()
         ]);
     }
 

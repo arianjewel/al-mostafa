@@ -1,5 +1,10 @@
 @extends('frontend.layouts.app')
 @section('content')
+<style type="text/css">
+  .pagination{
+    float: right;
+  }
+</style>
     <!-- Single Area -->
     <section class="single_area">
     	<div class="container">
@@ -34,17 +39,21 @@
      <div class="container">
         <div class="row">
             <div class="col-md-12">
-                  <div class="tab" id="category_all" style="margin-bottom: 2%;">
-                      <button class="tablinks career_category" data-id='0'>All</button>
+                  <div class="text-center" id="category_all" style="margin-bottom: 2%;">
+                      <button class="btn btn-lg btn-info career_category" data-id='0'>All</button>
                       @foreach(\App\CareerCategory::all() as $category)
-                      <button class="tablinks career_category" data-id='{{$category->id}}'>{{$category->name}}</button>
+                      <button class="btn btn-lg btn-success career_category" data-id='{{$category->id}}'>{{$category->name}}</button>
                       @endforeach
                     </div>
                     <div id="career_table">
                       
                     </div>
+
+
+
+                    
                                         
-<!--                     <div id="Paris" class="tabcontent">
+{{--                <div id="Paris" class="tabcontent">
                       <h3>Marketing / Sales</h3>
                       <p>Paris is the capital of France.</p> 
                     </div>
@@ -64,7 +73,11 @@
                     <div id="IT" class="tabcontent">
                       <h3>IT</h3>
                       <p>Tokyo is the capital of Japan.</p>
-                    </div> -->
+                    </div> 
+--}}
+
+
+
             </div>
         </div>
     </div>
