@@ -28,3 +28,5 @@ Route::get('/event', 'FrontendController@event')->name('event');
 Route::get('/event/{slug}', 'FrontendController@eventSingle')->name('event.single');
 
 Route::get('/gallery', 'FrontendController@gallery')->name('gallery');
+
+Route::get('/job/category', 'FrontendController@careerFromCategory')->name('career.category');

@@ -39,7 +39,7 @@
 			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:150','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			$this->form[] = ['label'=>'Body','name'=>'body','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Application link','name'=>'url','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Category','name'=>'category_id','type'=>'select','validation'=>'required','width'=>'col-sm-10','datatable'=>'career_categories,name'];
+			$this->form[] = ['label'=>'Category','name'=>'category_id','type'=>'select','width'=>'col-sm-10','datatable'=>'career_categories,name'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -324,6 +324,4 @@
 
 
 	    //By the way, you can still create your own method in here... :) 
-
-
 	}

@@ -34,34 +34,17 @@
      <div class="container">
         <div class="row">
             <div class="col-md-12">
-                  <div class="tab" style="margin-bottom: 2%;">
-                      <button class="tablinks" onclick="openCity(event, 'London')">All</button>
-                      <button class="tablinks" onclick="openCity(event, 'Paris')">Marketing / Sales</button>
-                      <button class="tablinks" onclick="openCity(event, 'Tokyo')">Account</button>
-                      <button class="tablinks" onclick="openCity(event, 'Commercial')">Commercial</button>
-                      <button class="tablinks" onclick="openCity(event, 'Administration')">Administration</button> 
-                      <button class="tablinks" onclick="openCity(event, 'IT')">IT</button>
+                  <div class="tab" id="category_all" style="margin-bottom: 2%;">
+                      <button class="tablinks career_category" data-id='0'>All</button>
+                      @foreach(\App\CareerCategory::all() as $category)
+                      <button class="tablinks career_category" data-id='{{$category->id}}'>{{$category->name}}</button>
+                      @endforeach
                     </div>
-                    
-                    <div id="London" class="tabcontent">
-                      <h3>All</h3>
-                          <table class="table">
-    
-                                <tbody class="text-center">
-                                @foreach(\App\Job::latest()->take(6)->get() as $job)
-                                <tr>
-                                    <td class="w-75"><a href="{{route('career.single', $job->slug)}}" target="_blank">{{$job->title}}</a></td>
-                                    <td class="text-white" style="background-color: #0072c2">
-                                        <a style="color:white" @if($job->url) href="{{$job->url}}" @else href="{{route('career.single', $job->slug)}}" @endif >Apply Online</a>
-                                    </td>
-                                    <td>{{date('M d, Y', strtotime($job->created_at))}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <div id="career_table">
+                      
                     </div>
-                    
-                    <div id="Paris" class="tabcontent">
+                                        
+<!--                     <div id="Paris" class="tabcontent">
                       <h3>Marketing / Sales</h3>
                       <p>Paris is the capital of France.</p> 
                     </div>
@@ -81,27 +64,12 @@
                     <div id="IT" class="tabcontent">
                       <h3>IT</h3>
                       <p>Tokyo is the capital of Japan.</p>
-                    </div>
+                    </div> -->
             </div>
         </div>
     </div>
    
 
-<script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script>
 <style>
 
 /* Style the tab */
@@ -159,3 +127,52 @@ function openCity(evt, cityName) {
     @include('frontend.partials.partner')
     
     @endsection
+
+
+@push('script')
+<script type="text/javascript">
+// function openCity(evt, cityName) {
+//   var i, tabcontent, tablinks;
+//   tabcontent = document.getElementsByClassName("tabcontent");
+//   for (i = 0; i < tabcontent.length; i++) {
+//     tabcontent[i].style.display = "none";
+//   }
+//   tablinks = document.getElementsByClassName("tablinks");
+//   for (i = 0; i < tablinks.length; i++) {
+//     tablinks[i].className = tablinks[i].className.replace(" active", "");
+//   }
+//   document.getElementById(cityName).style.display = "block";
+//   evt.currentTarget.className += " active";
+// }
+$(document).ready(function() {
+  getCategoryJob();
+  $('#category_all').on('click', '.career_category', function(e){
+    e.preventDefault();
+    let category = $(this).data('id');
+    getCategoryJob(category);
+  });
+});
+$('#career_table').on('click', '.pagination a', function(e){
+  e.preventDefault();
+  let url = $(this).attr('href');
+  requestAjaxUrl(url);
+});
+
+function getCategoryJob(category = 0){
+    let url = "{{route('career.category')}}" + '?category='+category;
+    requestAjaxUrl(url);
+  
+}
+
+function requestAjaxUrl(url){
+    $.ajax({
+      type: 'GET',
+      url,
+      success: function(response){
+        $('#career_table').html(response.html);
+      }
+    });
+}
+
+</script>
+@endpush

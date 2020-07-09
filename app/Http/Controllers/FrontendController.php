@@ -58,12 +58,25 @@ class FrontendController extends Controller
     }    
 
     public function career(){
-        return view('frontend.career');
+        return view('frontend.career.career');
     }
 
     public function careerSingle($slug){
         $career = Job::where('slug',$slug)->first();
-        return view('frontend.career_single', compact('career'));
+        return view('frontend.career.career_single', compact('career'));
     } 
+
+    public function careerFromCategory(Request $request){
+        if ($request->category == 0) {
+            $jobs = Job::latest()->paginate(5);
+        }else{
+            $jobs = Job::where('category_id', $request->category)->paginate(5);
+        }
+
+        return response()->json([
+            'success' => true,
+            'html' => view('frontend.career.job_table_body', compact('jobs'))->render()
+        ]);
+    }
 
 }
