@@ -17,7 +17,8 @@
 		@endif
 	</tbody>
 </table>
-{{$jobs->appends($_GET)->links()}}
+<div class="d-flex justify-content-center" style="margin-bottom: 20px;">{{$jobs->appends($_GET)->links()}}</div>
+
 
 
 
